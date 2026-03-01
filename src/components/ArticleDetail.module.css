@@ -1,66 +1,67 @@
-/* Layout */
-.articleLayout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    margin-top: 3rem;
-    padding-bottom: 5rem;
+/* Article Detail Design System - Modern Light & High Contrast */
+
+.articleContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
 }
 
 /* 1. Above The Fold */
 .aboveTheFold {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 3rem;
 }
 
 .breadcrumbs {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.85rem;
-    color: #71717a;
+    font-size: 0.75rem;
+    color: #6b7280;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
 .breadcrumbs a {
     color: #111111;
+    text-decoration: none;
     transition: color 0.2s;
 }
 
 .breadcrumbs a:hover {
-    color: #00d084;
+    color: #2563eb;
 }
 
 .title {
-    font-size: 2.8rem;
-    font-weight: 800;
-    line-height: 1.1;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.05;
     color: #111111;
-    margin-bottom: 1.5rem;
-    max-width: 900px;
+    margin-bottom: 2rem;
+    letter-spacing: -1.5px;
 }
 
 .meta {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    color: #bbb;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .metaItem {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .avatar {
     border-radius: 50%;
+    border: 1px solid #e5e7eb;
 }
 
 .authorName strong {
@@ -69,48 +70,67 @@
 }
 
 .metaDivider {
-    width: 1px;
-    height: 16px;
-    background-color: #e4e4e7;
+    width: 4px;
+    height: 4px;
+    background-color: #d1d5db;
+    border-radius: 50%;
 }
 
 .featuredImageWrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 4px;
+    background-color: #f3f4f6;
+    border-radius: 12px;
     overflow: hidden;
-    margin: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .featuredImage {
     object-fit: cover;
 }
 
-/* Main Content constraints */
-.mainContent {
-    display: flex;
-    flex-direction: column;
+/* Layout */
+.articleLayout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 4rem;
+    align-items: start;
 }
 
-/* 2. The Hook (TL;DR) */
+/* Main Content */
+.mainContent {
+    max-width: 800px;
+}
+
+/* 2. TL;DR Hook */
 .tldrBox {
-    background-color: #fdfdfd;
-    border-left: 4px solid #fbbf24;
-    /* Warning yellow accent */
-    padding: 1.5rem;
-    border-radius: 0 4px 4px 0;
-    margin-bottom: 2.5rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 3rem;
 }
 
 .tldrTitle {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
     font-weight: 800;
-    color: #fbbf24;
-    margin-bottom: 1rem;
+    color: #111111;
+    margin-bottom: 1.25rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tldrTitle::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #fbbf24;
+    border-radius: 2px;
 }
 
 .tldrList {
@@ -119,109 +139,108 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .tldrList li {
     position: relative;
-    padding-left: 1.25rem;
-    font-size: 1.05rem;
-    color: #3f3f46;
+    padding-left: 1.5rem;
+    font-size: 1.1rem;
+    color: #374151;
     line-height: 1.5;
+    font-weight: 500;
 }
 
 .tldrList li::before {
-    content: '⚡';
+    content: '•';
     position: absolute;
     left: 0;
-    top: 1px;
-    font-size: 0.8rem;
+    color: #fbbf24;
+    font-weight: bold;
 }
 
-/* 3. The Body & Typography */
+/* 3. Typography & Body Text */
 .bodyText {
-    color: #ddd;
-    font-size: 1.1rem;
+    color: #1f2937;
+    font-size: 1.2rem;
+    line-height: 1.75;
 }
 
 .bodyText p {
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-}
-
-.bodyText h2 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #111111;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-}
-
-.bodyText h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #111111;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
-.bodyText ul {
-    list-style-type: none;
-    padding-left: 1rem;
     margin-bottom: 2rem;
 }
 
-.bodyText ul li {
-    position: relative;
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    line-height: 1.6;
+.bodyText h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111111;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
 }
 
-.bodyText ul li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 6px;
-    height: 6px;
-    background-color: #00d084;
+.bodyText h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111111;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.bodyText ul,
+.bodyText ol {
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+}
+
+.bodyText li {
+    margin-bottom: 0.75rem;
+}
+
+.bodyText blockquote {
+    border-left: 4px solid #111111;
+    padding-left: 1.5rem;
+    font-style: italic;
+    font-size: 1.4rem;
+    margin: 3rem 0;
+    color: #111111;
 }
 
 /* Table Style */
 .bodyText table {
     width: 100%;
+    margin: 3rem 0;
     border-collapse: collapse;
-    margin-bottom: 2.5rem;
-    margin-top: 1.5rem;
-}
-
-.bodyText th,
-.bodyText td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid #f4f4f5;
+    font-size: 1rem;
+    border: 1px solid #e5e7eb;
 }
 
 .bodyText th {
-    background-color: #fdfdfd;
-    color: #111111;
+    background-color: #f9fafb;
+    padding: 1rem;
+    text-align: left;
     font-weight: 700;
-    border-bottom: 2px solid #e4e4e7;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.bodyText tr:hover td {
-    background-color: #080808;
+.bodyText td {
+    padding: 1rem;
+    border-bottom: 1px solid #f3f4f6;
 }
 
-/* Ad Wrapper inside content */
+.bodyText tr:last-child td {
+    border-bottom: none;
+}
+
+/* Ad Wrapper - SEO & AdSense optimized space */
 .adWrapper {
-    margin: 2.5rem 0;
-    background-color: #111111;
-    /* subtle contrast */
-    border: 1px dashed #e4e4e7;
-    border-radius: 4px;
+    margin: 4rem 0;
+    padding: 1rem;
+    background-color: #fafafa;
+    border: 1px solid #f3f4f6;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
 }
 
 /* Tags */
@@ -230,48 +249,50 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #f4f4f5;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
 }
 
 .tagLabel {
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
     color: #111111;
 }
 
 .tag {
-    background-color: #fdfdfd;
-    color: #52525b;
+    background-color: #f3f4f6;
+    color: #4b5563;
     font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    text-decoration: none;
     transition: all 0.2s;
-    border: 1px solid #e4e4e7;
 }
 
 .tag:hover {
-    background-color: #e4e4e7;
-    color: #111111;
+    background-color: #111111;
+    color: #ffffff;
 }
 
-/* Footer & Social Share */
+/* Article Footer */
 .articleFooter {
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    margin-top: 4rem;
 }
 
 .shareRow {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
 .shareRow span {
-    font-weight: 700;
-    color: #111111;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
 }
 
 .shareButtons {
@@ -280,179 +301,157 @@
 }
 
 .shareBtn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background-color: #fdfdfd;
+    background-color: #ffffff;
     color: #111111;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e4e4e7;
+    border: 1px solid #e5e7eb;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .shareBtn:hover {
-    background-color: #fbbf24;
-    color: #000;
-    border-color: #fbbf24;
+    background-color: #111111;
+    color: #ffffff;
+    border-color: #111111;
 }
 
 /* Author Card */
 .authorCard {
-    background-color: #111111;
-    border: 1px solid #f4f4f5;
-    padding: 1.5rem;
-    border-radius: 4px;
+    background-color: #f9fafb;
+    padding: 2.5rem;
+    border-radius: 16px;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: center;
+    border: 1px solid #e5e7eb;
 }
 
 .authorImage {
     border-radius: 50%;
-    border: 2px solid #e4e4e7;
     flex-shrink: 0;
 }
 
-.authorInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.authorNameCard {
-    font-size: 1.2rem;
+.authorInfo h4 {
+    font-size: 1.5rem;
     font-weight: 800;
-    color: #111111;
+    margin-bottom: 0.5rem;
 }
 
 .authorBio {
-    font-size: 0.9rem;
-    color: #52525b;
-    line-height: 1.5;
+    color: #4b5563;
+    line-height: 1.6;
 }
 
-/* 5. Sidebar Styling */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Sidebar Styling */
 .stickySidebar {
     position: sticky;
     top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 3rem;
 }
 
 .sidebarSection {
-    background-color: #080808;
-    border: 1px solid #f4f4f5;
-    border-radius: 4px;
-    padding: 1.5rem;
+    background-color: #ffffff;
 }
 
 .sidebarTitle {
-    font-size: 1.2rem;
-    font-weight: 800;
+    font-size: 1.25rem;
+    font-weight: 900;
     color: #111111;
     margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #fbbf24;
-    /* Warning yellow */
-    display: inline-block;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Trending List */
+.sidebarTitle::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #e5e7eb;
+    margin-left: 1rem;
+}
+
 .trendingList {
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
 }
 
 .trendingList li {
     display: flex;
     gap: 1rem;
-    align-items: flex-start;
+    margin-bottom: 1.5rem;
 }
 
 .trendNumber {
     font-size: 1.5rem;
-    font-weight: 800;
-    color: #e4e4e7;
+    font-weight: 900;
+    color: #fbbf24;
     line-height: 1;
 }
 
 .trendingList li a {
     font-weight: 700;
-    color: #ddd;
-    font-size: 0.95rem;
+    color: #111111;
+    text-decoration: none;
     line-height: 1.4;
     transition: color 0.2s;
 }
 
 .trendingList li a:hover {
-    color: #fbbf24;
+    color: #2563eb;
 }
 
 /* Community Widget */
 .communityWidget {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .communityPost {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #f4f4f5;
-}
-
-.communityPost:last-of-type {
-    border-bottom: none;
-    padding-bottom: 0;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 12px;
 }
 
 .commHeader {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    color: #fbbf24;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.85rem;
     margin-bottom: 0.5rem;
 }
 
-.commUser {
-    font-weight: 700;
-    font-size: 0.85rem;
-}
-
 .commText {
-    font-size: 0.85rem;
-    color: #52525b;
+    font-size: 0.9rem;
+    color: #4b5563;
     line-height: 1.5;
-    font-style: italic;
 }
 
 .joinClubBtn {
     width: 100%;
-    padding: 0.8rem;
-    background-color: transparent;
-    color: #fbbf24;
-    border: 1px solid #fbbf24;
+    padding: 1rem;
+    background-color: #111111;
+    color: #ffffff;
+    border: none;
     font-weight: 700;
-    border-radius: 4px;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .joinClubBtn:hover {
-    background-color: #fbbf24;
-    color: #000;
+    background-color: #000000;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 1024px) {
@@ -460,18 +459,13 @@
         grid-template-columns: 1fr;
     }
 
-    .stickySidebar {
-        position: static;
+    .mainContent {
+        max-width: 100%;
     }
 }
 
 @media (max-width: 768px) {
-    .title {
-        font-size: 2rem;
-    }
-
     .meta {
         flex-wrap: wrap;
-        gap: 0.5rem 1rem;
     }
 }
