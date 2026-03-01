@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/admin/', '/private/'],
         },
-        sitemap: 'https://18wheelers.com/sitemap.xml',
+        sitemap: 'https://18-wheelers.com/sitemap.xml',
     }
 }
