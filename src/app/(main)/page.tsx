@@ -1,21 +1,40 @@
 import Hero from "../../components/Hero";
 import ArticleList from "../../components/ArticleList";
 import SEO from "../../components/SEO";
+import { getArticles } from "../../lib/dataFetcher";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch latest 10 articles
+  const articles = await getArticles(10);
+
+  // Hero takes the first (latest) article
+  const latestArticle = articles.length > 0 ? articles[0] : undefined;
+  // ArticleList takes the rest
+  const remainingArticles = articles.length > 1 ? articles.slice(1) : [];
+
   return (
     <>
       <SEO
         type="WebSite"
         data={{
-          name: "18Wheelers & Muscle Cars",
-          url: "https://18wheelers.com",
-          description: "Global automotive news portal for trucks and muscle cars."
+          name: "18-Wheelers | Logistics Insights & Muscle Car Heritage",
+          url: "https://18-wheelers.com",
+          description: "The ultimate hub for trucking professionals and American muscle car enthusiasts. Led by industry experts."
         }}
       />
-      <Hero />
-      <div className="container">
-        <ArticleList />
+      <Hero article={latestArticle} />
+      <div className="container" style={{ marginTop: "2rem" }}>
+        <div style={{
+          margin: "3rem 0 1rem",
+          paddingBottom: "1rem",
+          borderBottom: "1px solid #e5e7eb",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }}>
+          <h2 style={{ fontSize: "1.5rem", fontWeight: "900", letterSpacing: "-0.5px" }}>LATEST STORIES</h2>
+        </div>
+        <ArticleList articles={remainingArticles} />
       </div>
     </>
   );

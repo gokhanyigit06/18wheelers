@@ -1,8 +1,15 @@
 import { MetadataRoute } from 'next'
+import { getArticles } from '../lib/dataFetcher'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    // In a real application, you would fetch your dynamic URLs from Firebase here
-    // e.g., const articles = await getArticles(); ... return articles.map(...)
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const articles = await getArticles(100); // Fetch up to 100 recent articles for sitemap
+
+    const articleUrls = articles.map((article) => ({
+        url: `https://18-wheelers.com/${article.category}/${article.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.6,
+    }));
 
     return [
         {
@@ -35,5 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 0.7,
         },
+        ...articleUrls,
     ]
 }

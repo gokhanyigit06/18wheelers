@@ -3,20 +3,30 @@ import Image from "next/image";
 import { Calendar } from "lucide-react";
 import styles from "./Hero.module.css";
 import AdUnit from "./AdUnit";
+import { Article } from "../lib/dataFetcher";
 
-export default function Hero() {
+export default function Hero({ article }: { article?: Article }) {
+    if (!article) {
+        return (
+            <section className="container">
+                <div style={{ padding: "4rem 0", textAlign: "center", color: "#6b7280" }}>
+                    Loading premium content...
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="container">
             <AdUnit type="leaderboard" />
 
             <div className={styles.heroLayout}>
-
                 {/* Left: Image */}
                 <div className={styles.imageColumn}>
                     <div className={styles.imageWrapper}>
                         <Image
-                            src="https://images.unsplash.com/photo-1600867451270-1793316164ac?auto=format&fit=crop&q=80&w=1200"
-                            alt="Conquering Your Cash"
+                            src={article.image}
+                            alt={article.title}
                             fill
                             priority
                             className={styles.image}
@@ -28,21 +38,21 @@ export default function Hero() {
                 {/* Right: Content */}
                 <div className={styles.contentColumn}>
                     <h2 className={styles.mainTitle}>
-                        <Link href="/news/peterbilt-legend" className={styles.titleLink}>
-                            Conquering Your Cash with Wit and Weapons
+                        <Link href={`/${article.category}/${article.id}`} className={styles.titleLink}>
+                            {article.title}
                         </Link>
                     </h2>
 
                     <div className={styles.metaData}>
                         <div className={styles.dateInfo}>
                             <Calendar size={16} className={styles.metaIcon} />
-                            <span>Saturday, January 6, 2024</span>
+                            <span>{article.date}</span>
                         </div>
-                        <span className={styles.category}>financial-fitness</span>
+                        <span className={styles.category}>{article.category.toUpperCase()}</span>
                     </div>
 
                     <p className={styles.excerpt}>
-                        Forget stuffy spreadsheets and soul-crushing jargon. Your wallet isn't the Bermuda Triangle of personal finance, and you certainly ain't doomed to wander its murky depths!
+                        {article.tldr?.substring(0, 180)}...
                     </p>
                 </div>
 

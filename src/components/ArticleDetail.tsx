@@ -5,7 +5,7 @@ import { Facebook, Twitter, Linkedin, Link2, ChevronRight, Clock, Calendar, Mess
 import styles from "./ArticleDetail.module.css";
 import AdUnit from "./AdUnit";
 
-export default function ArticleDetail({ article }: { article?: any }) {
+export default function ArticleDetail({ article, trending }: { article?: any, trending?: any[] }) {
 
     // A helper function to inject Ad Units smoothly between paragraphs
     const renderContentWithAds = (htmlString: string) => {
@@ -114,7 +114,7 @@ export default function ArticleDetail({ article }: { article?: any }) {
                         <span className={styles.tagLabel}>Categorized in:</span>
                         <Link href={`/${article.category}`} className={styles.tag}>{article.category?.replace('-', ' ')}</Link>
                         <Link href="#" className={styles.tag}>Industry Updates</Link>
-                        <Link href="#" className={styles.tag}>Maintenance</Link>
+                        <Link href="#" className={styles.tag}>Expert Insights</Link>
                     </div>
 
                     {/* Social Share & Author Card - Standard Industry Layout */}
@@ -134,7 +134,7 @@ export default function ArticleDetail({ article }: { article?: any }) {
                             <div className={styles.authorInfo}>
                                 <h4>{article.authorName}</h4>
                                 <p className={styles.authorBio}>
-                                    Expert contributor specializing in {article.category === 'trucks' ? 'heavy-duty trucking' : 'automotive performance'}. Dedicated to providing the 18-Wheelers community with data-driven insights and on-the-road expertise.
+                                    Expert contributor specializing in {article.category === 'trucks' || article.category === 'logistics' ? 'logistics and heavy-duty trucking' : 'automotive performance and heritage'}. Dedicated to providing the community with high-value insights.
                                 </p>
                             </div>
                         </div>
@@ -148,38 +148,37 @@ export default function ArticleDetail({ article }: { article?: any }) {
                         {/* Ad Unit Above the Fold (Sidebar) */}
                         <AdUnit type="sidebar" />
 
-                        {/* Trending Now */}
+                        {/* Trending Now - Dynamic */}
                         <div className={styles.sidebarSection}>
                             <h3 className={styles.sidebarTitle}>
-                                Must Read <TrendingUp size={18} />
+                                Latest Must Read <TrendingUp size={18} />
                             </h3>
                             <ul className={styles.trendingList}>
-                                <li>
-                                    <span className={styles.trendNumber}>01</span>
-                                    <Link href="#">Peterbilt 389 Heritage: The Last of a Legend</Link>
-                                </li>
-                                <li>
-                                    <span className={styles.trendNumber}>02</span>
-                                    <Link href="#">Top 5 Fuel Efficiency Mods for 2026</Link>
-                                </li>
-                                <li>
-                                    <span className={styles.trendNumber}>03</span>
-                                    <Link href="#">Understanding the New ELD Mandate Updates</Link>
-                                </li>
+                                {trending && trending.length > 0 ? trending.map((t, idx) => (
+                                    <li key={t.id}>
+                                        <span className={styles.trendNumber}>0{idx + 1}</span>
+                                        <Link href={`/${t.category}/${t.id}`}>{t.title}</Link>
+                                    </li>
+                                )) : (
+                                    <>
+                                        <li><span className={styles.trendNumber}>01</span><Link href="#">Logistics Industry Outlook 2026</Link></li>
+                                        <li><span className={styles.trendNumber}>02</span><Link href="#">American Muscle Heritage Restored</Link></li>
+                                    </>
+                                )}
                             </ul>
                         </div>
 
                         {/* Social Community Voice */}
                         <div className={styles.sidebarSection}>
                             <h3 className={styles.sidebarTitle}>
-                                Community Box <MessageSquare size={18} />
+                                Community Insights <MessageSquare size={18} />
                             </h3>
                             <div className={styles.communityWidget}>
                                 <div className={styles.communityPost}>
                                     <div className={styles.commHeader}>
-                                        <Users size={16} /> <span>@OwnerOp88</span>
+                                        <Users size={16} /> <span>Join the Conversation</span>
                                     </div>
-                                    <p className={styles.commText}>"Best technical breakdown I've read this year. Very helpful for my fleet planning."</p>
+                                    <p className={styles.commText}>Connect with over 50,000 trucking and automotive enthusiasts in our private social club.</p>
                                 </div>
                                 <button className={styles.joinClubBtn}>Join 18-Wheelers Social Club</button>
                             </div>

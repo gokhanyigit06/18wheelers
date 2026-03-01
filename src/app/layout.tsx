@@ -21,6 +21,9 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   title: "18-Wheelers | Logistics Insights & Muscle Car Heritage",
   description: "The ultimate hub for trucking professionals and American muscle car enthusiasts. Led by industry experts.",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+  }
 };
 
 export default function RootLayout({

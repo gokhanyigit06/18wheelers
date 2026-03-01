@@ -1,5 +1,5 @@
 import ArticleDetail from "../../../../components/ArticleDetail";
-import { getArticleById } from "../../../../lib/dataFetcher";
+import { getArticleById, getArticles } from "../../../../lib/dataFetcher";
 import { Metadata } from 'next';
 
 type Props = {
@@ -28,10 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
     const article = await getArticleById(params.id);
+    const trending = await getArticles(4); // Fetch 4 latest for sidebar
 
     return (
         <main>
-            <ArticleDetail article={article} />
+            <ArticleDetail
+                article={article}
+                trending={trending.filter(t => t.id !== params.id).slice(0, 3)}
+            />
         </main>
     );
 }
