@@ -1,0 +1,355 @@
+.contactContainer {
+    background-color: #ffffff;
+    padding-bottom: 6rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #111111;
+}
+
+/* 1. Hero Section */
+.heroSection {
+    text-align: center;
+    padding: 6rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.heroLead {
+    font-size: 1.25rem;
+    color: #3f3f46;
+    line-height: 1.6;
+}
+
+/* 2. Methods Grid */
+.methodsSection {
+    background-color: #f8f8f8;
+    margin: 0 -50vw 4rem -50vw;
+    padding: 4rem 50vw;
+    display: flex;
+    justify-content: center;
+}
+
+.methodsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+}
+
+.methodCard {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.methodTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.methodText {
+    font-size: 1rem;
+    color: #52525b;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.emailLink {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 2px solid transparent;
+    width: fit-content;
+    transition: all 0.2s;
+}
+
+.emailLink:hover {
+    color: #dc2626;
+    border-bottom-color: #dc2626;
+}
+
+/* 3. Editorial Integrity Section (From User Image) */
+.editorialSection {
+    max-width: 1000px;
+    margin: 0 auto 6rem auto;
+    padding: 0 1.5rem;
+}
+
+.editorialBox {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 4rem;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.edHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.edIcon {
+    color: #111;
+}
+
+.edTitle {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #111;
+}
+
+.edText {
+    font-size: 1.1rem;
+    color: #3f3f46;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.expertsList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.expertItem {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.expertAvatar {
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #f4f4f5;
+}
+
+.expertInfo h4 {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.3rem;
+    color: #111;
+}
+
+.expertInfo span {
+    font-size: 0.9rem;
+    color: #71717a;
+    font-weight: 500;
+}
+
+.edFooterText {
+    font-size: 1rem;
+    color: #52525b;
+    line-height: 1.6;
+    border-top: 1px solid #f4f4f5;
+    padding-top: 2rem;
+    font-weight: 500;
+}
+
+/* 4. Form Section */
+.formSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+}
+
+.sectionHeading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.inputRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputGroup label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #71717a;
+}
+
+.inputField,
+.textArea {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #e4e4e7;
+    background-color: #f8f8f8;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.inputField:focus,
+.textArea:focus {
+    outline: none;
+    border-color: #000;
+    background-color: #fff;
+}
+
+.textArea {
+    resize: vertical;
+}
+
+.submitBtn {
+    background-color: #111111;
+    color: #ffffff;
+    border: none;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.2s;
+    width: fit-content;
+}
+
+.submitBtn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btnSuccess {
+    background-color: #00d084 !important;
+}
+
+/* Hub Wrapper */
+.hubWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.hubBox {
+    background-color: #f8f8f8;
+    padding: 3rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hubIcon {
+    color: #000;
+}
+
+.hubText {
+    font-size: 1rem;
+    color: #52525b;
+    line-height: 1.6;
+}
+
+.hqBox {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.hqBox strong {
+    font-size: 1.1rem;
+}
+
+.hqBox span {
+    font-size: 0.9rem;
+    color: #71717a;
+}
+
+.brandMention {
+    font-size: 0.85rem;
+    color: #71717a;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 1.5rem;
+}
+
+.brandMention strong {
+    color: #000;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .methodsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .methodsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .expertsList {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .inputRow {
+        grid-template-columns: 1fr;
+    }
+
+    .editorialBox {
+        padding: 2.5rem 1.5rem;
+    }
+}

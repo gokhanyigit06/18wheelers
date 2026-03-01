@@ -1,180 +1,102 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Twitter, Youtube, Hexagon } from "lucide-react";
+import { Calendar } from "lucide-react";
 import styles from "./ArticleList.module.css";
-import React from "react";
 
-const MOCK_LATEST = [
+const MOCK_DATA = [
     {
-        id: 1,
-        title: "Unlock Exceptional Deals on the Latest Heavy Duty Parts and Elevate",
-        badge: "DEALS",
-        author: "Ella Epic",
-        date: "January 18, 2026",
-        excerpt: "The heartbeat of modern connectivity pulses within the circuits of an 18-wheeler, where communication...",
-        image: "https://images.unsplash.com/photo-1591768793355-74d75b39bf9f?auto=format&fit=crop&q=80&w=600"
+        title: "Beyond Bali: Unconventional Destinations for Off-the-Beaten-Path Nomadic Souls",
+        date: "Jan 4, 2026",
+        category: "the-digital-nomad",
+        image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&q=80&w=400"
     },
     {
-        id: 2,
-        title: "Immerse Yourself in Savings with Exclusive Exhaust Deals That Redefine",
-        badge: "DEALS",
-        author: "Ella Epic",
-        date: "January 18, 2026",
-        excerpt: "The heartbeat of modern connectivity pulses within the circuits of a muscle car, where communication...",
-        image: "https://images.unsplash.com/photo-1615887023516-9b6bcd559e87?auto=format&fit=crop&q=80&w=600"
+        title: "The Age of Hyper-Personalization: Homes Tailored to You",
+        date: "Jan 3, 2026",
+        category: "future-living",
+        image: "https://images.unsplash.com/photo-1628126235206-5260b9ea6441?auto=format&fit=crop&q=80&w=400"
     },
     {
-        id: 3,
-        title: "Navigating the Ever-Evolving Landscape of Suspension Upgrades",
-        badge: "PARTS",
-        author: "Ella Epic",
-        date: "January 19, 2026",
-        excerpt: "The heartbeat of modern connectivity pulses within the circuits of an American classic, where communication...",
-        image: "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=600"
+        title: "Iceland's Hidden Jewel: Exploring Dettifoss and the Diamond Circle",
+        date: "Dec 28, 2025",
+        category: "adventure-awaits",
+        image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&q=80&w=400"
     },
     {
-        id: 4,
-        title: "Guide to Top Performance Tuning Revolutionizing User Experience",
-        badge: "TUNING",
-        author: "Ella Epic",
-        date: "January 17, 2026",
-        excerpt: "The heartbeat of modern connectivity pulses within the circuits of an engine block, where communication...",
-        image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=600"
+        title: "Beyond Pixels and Quests: The Unexpected Benefits of Gaming",
+        date: "Dec 25, 2025",
+        category: "gaming-culture",
+        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=400"
     },
     {
-        id: 5,
-        title: "Unleashing Innovative Features for Seamless Long Haul Experiences",
-        badge: "NEWS",
-        author: "Ella Epic",
-        date: "January 17, 2026",
-        excerpt: "The heartbeat of modern connectivity pulses within the circuits of a long haul, where communication...",
-        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=600"
+        title: "Unboxing Nostalgia: The Enduring Power of Retro Gaming",
+        date: "Dec 22, 2025",
+        category: "gaming-culture",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+        title: "Work-Live Blend: Reimagining Spaces for a Flexible Future",
+        date: "Dec 14, 2025",
+        category: "future-living",
+        image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+        title: "Eco-Living Revolution: Building Sustainable Homes for a Green Future",
+        date: "Dec 11, 2025",
+        category: "future-living",
+        image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=400"
+    },
+    {
+        title: "More Than Just Wins and Losses: The Power of Community in Gaming",
+        date: "Dec 9, 2025",
+        category: "gaming-culture",
+        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=400"
     }
 ];
 
-const MOCK_CATEGORIES = [
-    { name: "Trucks", count: "7 Articles", image: "https://images.unsplash.com/photo-1600867451270-1793316164ac?auto=format&fit=crop&q=80&w=300" },
-    { name: "Deals", count: "8 Articles", image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=300", bg: "#d9abff" },
-    { name: "Tuning", count: "8 Articles", image: "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&q=80&w=300" },
-    { name: "News", count: "11 Articles", image: "https://images.unsplash.com/photo-1591768793355-74d75b39bf9f?auto=format&fit=crop&q=80&w=300" },
-    { name: "Muscle", count: "11 Articles", image: "https://images.unsplash.com/photo-1615887023516-9b6bcd559e87?auto=format&fit=crop&q=80&w=300" },
-    { name: "Tech", count: "6 Articles", image: "https://images.unsplash.com/photo-1518985238202-deee01072d65?auto=format&fit=crop&q=80&w=300" },
-];
-
-const MOCK_MUST_READ = [
-    { id: 1, title: "Gaming Laptops and Accessories, Redefining Your Path to Victory", badge: "GAMING", image: "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=150" },
-    { id: 2, title: "Latest Features an In-Depth Guide to Enhance Your Mobile Experience", badge: "ANDROID", image: "https://images.unsplash.com/photo-1598327105666-5b89351cb31b?auto=format&fit=crop&q=80&w=150" },
-    { id: 3, title: "Stay Ahead with the Latest Innovations in Apps Technology", badge: "NEWS", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=150" },
-    { id: 4, title: "Unleashing the Power of Apps for Ultimate Mobile Customization", badge: "PHONES", image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=150" }
-];
+// Replicate data to reach 20 items
+const FULL_LIST = Array.from({ length: 20 }, (_, i) => {
+    const item = MOCK_DATA[i % MOCK_DATA.length];
+    return { ...item, id: i + 1 };
+});
 
 export default function ArticleList() {
     return (
-        <div className={styles.wrapper}>
-            {/* Main Content Area */}
-            <div className={styles.mainContent}>
-                <div className={styles.sectionHeader}>
-                    <h2 className={styles.sectionTitle}>Latest News</h2>
-                    <div className={styles.sectionLine}></div>
-                </div>
-
-                <div className={styles.list}>
-                    {MOCK_LATEST.map(article => (
-                        <article key={article.id} className={styles.articleCard}>
+        <section className={styles.wrapper}>
+            <div className={styles.gridContainer}>
+                {FULL_LIST.map((article) => (
+                    <article key={article.id} className={styles.card}>
+                        <Link href={`/news/${article.id}`} className={styles.imageLink}>
                             <div className={styles.imageWrapper}>
-                                <Image src={article.image} alt={article.title} fill className={styles.image} sizes="(max-width: 768px) 100vw, 40vw" />
+                                <Image
+                                    src={article.image}
+                                    alt={article.title}
+                                    fill
+                                    className={styles.image}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                />
                             </div>
-                            <div className={styles.content}>
-                                <span className={styles.badge}>{article.badge}</span>
-                                <h3 className={styles.title}>
-                                    <Link href={`/news/${article.id}`}>{article.title}</Link>
-                                </h3>
-                                <div className={styles.meta}>
-                                    By <strong>{article.author}</strong> <span className={styles.dot}>•</span> {article.date}
+                        </Link>
+
+                        <div className={styles.content}>
+                            <div className={styles.metaData}>
+                                <div className={styles.dateInfo}>
+                                    <Calendar size={13} className={styles.metaIcon} />
+                                    <span>{article.date}</span>
                                 </div>
-                                <div className={styles.lineIndicator}></div>
-                                <p className={styles.excerpt}>{article.excerpt}</p>
+                                <span className={styles.category}>{article.category}</span>
                             </div>
-                        </article>
-                    ))}
-                </div>
+
+                            <h3 className={styles.title}>
+                                <Link href={`/news/${article.id}`}>
+                                    {article.title}
+                                </Link>
+                            </h3>
+                        </div>
+                    </article>
+                ))}
             </div>
-
-            {/* Sidebar */}
-            <aside className={styles.sidebar}>
-
-                {/* Stay Connected */}
-                <div className={styles.sidebarSection}>
-                    <h4 className={styles.sidebarTitle}>Stay Connected</h4>
-                    <div className={styles.socialGrid}>
-                        <a href="#" className={`${styles.socialBox} ${styles.socialFb}`}>
-                            <Facebook fill="white" size={24} />
-                            <span>495K</span>
-                        </a>
-                        <a href="#" className={`${styles.socialBox} ${styles.socialX}`}>
-                            <div className={styles.xIcon}>𝕏</div>
-                            <span>45.7K</span>
-                        </a>
-                        <a href="#" className={`${styles.socialBox} ${styles.socialYt}`}>
-                            <Youtube fill="white" size={24} />
-                            <span>3.5K</span>
-                        </a>
-                        <a href="#" className={`${styles.socialBox} ${styles.socialGn}`}>
-                            <Hexagon fill="white" size={24} />
-                            <span>145.7K</span>
-                        </a>
-                    </div>
-                </div>
-
-                {/* Categories */}
-                <div className={styles.sidebarSection}>
-                    <h4 className={styles.sidebarTitle}>Categories</h4>
-                    <div className={styles.categoryGrid}>
-                        {MOCK_CATEGORIES.map((cat, idx) => (
-                            <Link href="#" key={idx} className={styles.categoryCard}>
-                                {!cat.bg && <Image src={cat.image} alt={cat.name} fill className={styles.catImage} />}
-                                {cat.bg && <div className={styles.catBg} style={{ backgroundColor: cat.bg }}></div>}
-                                <div className={styles.catOverlay}></div>
-                                <div className={styles.catContent}>
-                                    <h5 className={styles.catName}>{cat.name}</h5>
-                                    <span className={styles.catCount}>{cat.count}</span>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Must Read */}
-                <div className={styles.sidebarSection}>
-                    <h4 className={styles.sidebarTitle}>Must Read</h4>
-                    <div className={styles.mustReadList}>
-                        {MOCK_MUST_READ.map(item => (
-                            <div key={item.id} className={styles.mustReadItem}>
-                                <div className={styles.mrImageWrapper}>
-                                    <Image src={item.image} alt={item.title} fill className={styles.mrImage} />
-                                </div>
-                                <div className={styles.mrContent}>
-                                    <span className={styles.mrBadge}>{item.badge}</span>
-                                    <h5 className={styles.mrTitle}>
-                                        <Link href="#">{item.title}</Link>
-                                    </h5>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Ad Box */}
-                <div className={styles.adBox}>
-                    <Image src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400" alt="Ad" fill className={styles.adImage} />
-                    <div className={styles.adOverlay}></div>
-                    <div className={styles.adContent}>
-                        <h3>Create an Amazing Tech News Website</h3>
-                        <p>Discover thousands of options, easy to customize layouts, one-click to import demo and much more.</p>
-                    </div>
-                </div>
-
-            </aside>
-        </div>
+        </section>
     );
 }

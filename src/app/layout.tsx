@@ -19,8 +19,8 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "18Wheelers & Muscle Cars | Global Automotive Portal",
-  description: "The ultimate hub for American trucks and muscle cars. High-performance news, reviews, and community.",
+  title: "18-Wheelers | Logistics Insights & Muscle Car Heritage",
+  description: "The ultimate hub for trucking professionals and American muscle car enthusiasts. Led by industry experts.",
 };
 
 export default function RootLayout({

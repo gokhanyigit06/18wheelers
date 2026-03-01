@@ -12,25 +12,30 @@ export default function AdminLayout({
             {/* Sidebar */}
             <aside className={styles.sidebar}>
                 <div className={styles.logo}>
-                    <span className={styles.logoIcon}>🚛</span> Admin
+                    <span className={styles.logoIcon}>🚛</span>
+                    <span>18W Admin</span>
                 </div>
 
                 <nav className={styles.navMenu}>
                     <Link href="/admin" className={styles.navLink}>
-                        <LayoutDashboard size={18} /> Dashboard
+                        <LayoutDashboard size={18} />
+                        <span>Dashboard</span>
                     </Link>
                     <Link href="/admin/write" className={styles.navLinkActive}>
-                        <PenSquare size={18} /> New Article
+                        <PenSquare size={18} />
+                        <span>New Article</span>
                     </Link>
                     <Link href="#" className={styles.navLink}>
-                        <Users size={18} /> Personas
+                        <Users size={18} />
+                        <span>Personas</span>
                     </Link>
                 </nav>
 
                 <div className={styles.logoutWrapper}>
-                    <button className={styles.logoutBtn}>
-                        <LogOut size={18} /> Exit Admin
-                    </button>
+                    <Link href="/" className={styles.logoutBtn}>
+                        <LogOut size={18} />
+                        <span>Exit Admin</span>
+                    </Link>
                 </div>
             </aside>
 

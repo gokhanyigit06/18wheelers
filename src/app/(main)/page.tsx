@@ -1,6 +1,4 @@
 import Hero from "../../components/Hero";
-import FeaturedGear from "../../components/FeaturedGear";
-import SmartThings from "../../components/SmartThings";
 import ArticleList from "../../components/ArticleList";
 import SEO from "../../components/SEO";
 
@@ -16,8 +14,6 @@ export default function Home() {
         }}
       />
       <Hero />
-      <FeaturedGear />
-      <SmartThings />
       <div className="container">
         <ArticleList />
       </div>

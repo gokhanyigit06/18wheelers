@@ -48,9 +48,10 @@ const MOCK_HTML = `
   <p>The road ahead might be bumpy, but the American trucker has weathered storms like this before. Stay informed, stay efficient, and keep the rubber side down.</p>
 `;
 
-export default function ArticleDetail() {
+export default function ArticleDetail({ article }: { article?: any }) {
     // A helper function to inject Ad Units smoothly between paragraphs
     const renderContentWithAds = (htmlString: string) => {
+        if (!htmlString) return null;
         // Basic split by <p> tag to inject ads between paragraphs
         const parts = htmlString.split("</p>");
 
@@ -84,19 +85,19 @@ export default function ArticleDetail() {
                 <nav className={styles.breadcrumbs}>
                     <Link href="/">Home</Link>
                     <ChevronRight size={14} />
-                    <Link href="/news">Logistics</Link>
+                    <Link href={`/${article?.category || "news"}`}>{article?.category?.toUpperCase() || "NEWS"}</Link>
                     <ChevronRight size={14} />
-                    <span>Global Crisis</span>
+                    <span>{article?.title?.substring(0, 30) || "Article"}...</span>
                 </nav>
 
                 <h1 className={styles.title}>
-                    How the 2026 Global Logistics Crisis is Shaping Diesel Prices
+                    {article?.title || "How the 2026 Global Logistics Crisis is Shaping Diesel Prices"}
                 </h1>
 
                 <div className={styles.meta}>
                     <div className={styles.metaItem}>
-                        <Image src="https://i.pravatar.cc/150?u=ella" alt="Ella Epic" width={32} height={32} className={styles.avatar} />
-                        <span className={styles.authorName}>By <strong>Ella Epic</strong></span>
+                        <Image src={article?.authorAvatar || "https://i.pravatar.cc/150?u=ella"} alt="Author" width={32} height={32} className={styles.avatar} />
+                        <span className={styles.authorName}>By <strong>{article?.authorName || "Ella Epic"}</strong></span>
                     </div>
                     <div className={styles.metaDivider}></div>
                     <div className={styles.metaItem}>
@@ -106,14 +107,14 @@ export default function ArticleDetail() {
                     <div className={styles.metaDivider}></div>
                     <div className={styles.metaItem}>
                         <Calendar size={16} />
-                        <span>Updated: March 1, 2026</span>
+                        <span>Published: {article?.date || "March 1, 2026"}</span>
                     </div>
                 </div>
 
                 <figure className={styles.featuredImageWrapper}>
                     <Image
-                        src="https://images.unsplash.com/photo-1591768793355-74d75b39bf9f?auto=format&fit=crop&q=80&w=1200"
-                        alt="Trucks backed up at a port"
+                        src={article?.image || "https://images.unsplash.com/photo-1591768793355-74d75b39bf9f?auto=format&fit=crop&q=80&w=1200"}
+                        alt={article?.title || "Featured Image"}
                         fill
                         className={styles.featuredImage}
                         priority
@@ -130,15 +131,19 @@ export default function ArticleDetail() {
                     <div className={styles.tldrBox}>
                         <h4 className={styles.tldrTitle}>TL;DR Summary</h4>
                         <ul className={styles.tldrList}>
-                            <li>Port bottlenecks and geopolitical tensions are driving diesel prices up sharply.</li>
-                            <li>Fleets must utilize APUs and route optimization software to mitigate immediate costs.</li>
-                            <li>Securing fuel contracts now and focusing on preventative maintenance is crucial for year-end survival.</li>
+                            {article?.tldr ? (
+                                article.tldr.split('\n').filter((line: string) => line.trim() !== '').map((line: string, i: number) => (
+                                    <li key={i}>{line.replace(/^- /, '')}</li>
+                                ))
+                            ) : (
+                                <li>No summary provided for this article.</li>
+                            )}
                         </ul>
                     </div>
 
                     {/* 3 & 4. The Body & Ad Placements */}
                     <div className={`${styles.bodyText} leading-relaxed`}>
-                        {renderContentWithAds(MOCK_HTML)}
+                        {renderContentWithAds(article?.body || MOCK_HTML)}
                     </div>
 
                     {/* Tags */}
@@ -162,11 +167,11 @@ export default function ArticleDetail() {
                         </div>
 
                         <div className={styles.authorCard}>
-                            <Image src="https://i.pravatar.cc/150?u=ella" alt="Ella Epic" width={80} height={80} className={styles.authorImage} />
+                            <Image src={article?.authorAvatar || "https://i.pravatar.cc/150?u=ella"} alt="Author" width={80} height={80} className={styles.authorImage} />
                             <div className={styles.authorInfo}>
-                                <h4 className={styles.authorNameCard}>Ella Epic</h4>
+                                <h4 className={styles.authorNameCard}>{article?.authorName || "Author"}</h4>
                                 <p className={styles.authorBio}>
-                                    Senior Automotive Journalist with over 10 years of experience covering the American trucking industry and muscle car developments. Passionate about diesel engines and long-haul lifestyle.
+                                    Industrial writer and automotive enthusiast sharing insights through the 18Wheelers Publisher Desk.
                                 </p>
                             </div>
                         </div>

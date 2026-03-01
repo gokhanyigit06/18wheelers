@@ -5,13 +5,13 @@
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
-    color: #fff;
+    color: #111111;
     font-size: 0.9rem;
     margin-bottom: 2rem;
 }
 
 .bannerText {
-    color: #fff;
+    color: #111111;
 }
 
 .bannerText strong {
@@ -47,7 +47,7 @@
 .sectionTitle {
     font-size: 1.8rem;
     font-weight: 800;
-    color: #fff;
+    color: #111111;
     line-height: 1;
     white-space: nowrap;
 }
@@ -66,8 +66,8 @@
 }
 
 .card {
-    background-color: #111;
-    border: 1px solid #1a1a1a;
+    background-color: #fdfdfd;
+    border: 1px solid #f4f4f5;
     border-radius: 4px;
     overflow: hidden;
     display: flex;
@@ -107,7 +107,7 @@
 
 .badge {
     background-color: #00d084;
-    color: #fff;
+    color: #111111;
     font-size: 0.65rem;
     font-weight: 800;
     padding: 0.2rem 0.5rem;
@@ -125,13 +125,13 @@
 .title {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #fff;
+    color: #111111;
     line-height: 1.3;
     margin-bottom: auto;
 }
 
 .title a {
-    color: #fff;
+    color: #111111;
 }
 
 .title a:hover {
@@ -147,7 +147,7 @@
 
 .date {
     font-size: 0.8rem;
-    color: #888;
+    color: #71717a;
 }
 
 @media (max-width: 1024px) {

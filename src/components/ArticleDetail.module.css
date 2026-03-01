@@ -19,7 +19,7 @@
     align-items: center;
     gap: 0.5rem;
     font-size: 0.85rem;
-    color: #888;
+    color: #71717a;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -27,7 +27,7 @@
 }
 
 .breadcrumbs a {
-    color: #fff;
+    color: #111111;
     transition: color 0.2s;
 }
 
@@ -39,7 +39,7 @@
     font-size: 2.8rem;
     font-weight: 800;
     line-height: 1.1;
-    color: #fff;
+    color: #111111;
     margin-bottom: 1.5rem;
     max-width: 900px;
 }
@@ -64,14 +64,14 @@
 }
 
 .authorName strong {
-    color: #fff;
+    color: #111111;
     font-weight: 700;
 }
 
 .metaDivider {
     width: 1px;
     height: 16px;
-    background-color: #333;
+    background-color: #e4e4e7;
 }
 
 .featuredImageWrapper {
@@ -96,7 +96,7 @@
 
 /* 2. The Hook (TL;DR) */
 .tldrBox {
-    background-color: #111;
+    background-color: #fdfdfd;
     border-left: 4px solid #fbbf24;
     /* Warning yellow accent */
     padding: 1.5rem;
@@ -126,7 +126,7 @@
     position: relative;
     padding-left: 1.25rem;
     font-size: 1.05rem;
-    color: #eee;
+    color: #3f3f46;
     line-height: 1.5;
 }
 
@@ -152,7 +152,7 @@
 .bodyText h2 {
     font-size: 1.8rem;
     font-weight: 800;
-    color: #fff;
+    color: #111111;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
@@ -161,7 +161,7 @@
 .bodyText h3 {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #fff;
+    color: #111111;
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
@@ -201,14 +201,14 @@
 .bodyText td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #f4f4f5;
 }
 
 .bodyText th {
-    background-color: #111;
-    color: #fff;
+    background-color: #fdfdfd;
+    color: #111111;
     font-weight: 700;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #e4e4e7;
 }
 
 .bodyText tr:hover td {
@@ -218,9 +218,9 @@
 /* Ad Wrapper inside content */
 .adWrapper {
     margin: 2.5rem 0;
-    background-color: #050505;
+    background-color: #111111;
     /* subtle contrast */
-    border: 1px dashed #222;
+    border: 1px dashed #e4e4e7;
     border-radius: 4px;
 }
 
@@ -232,27 +232,27 @@
     gap: 0.75rem;
     margin-top: 3rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #1a1a1a;
+    border-top: 1px solid #f4f4f5;
 }
 
 .tagLabel {
     font-weight: 700;
-    color: #fff;
+    color: #111111;
 }
 
 .tag {
-    background-color: #111;
-    color: #aaa;
+    background-color: #fdfdfd;
+    color: #52525b;
     font-size: 0.85rem;
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
     transition: all 0.2s;
-    border: 1px solid #222;
+    border: 1px solid #e4e4e7;
 }
 
 .tag:hover {
-    background-color: #222;
-    color: #fff;
+    background-color: #e4e4e7;
+    color: #111111;
 }
 
 /* Footer & Social Share */
@@ -271,7 +271,7 @@
 
 .shareRow span {
     font-weight: 700;
-    color: #fff;
+    color: #111111;
 }
 
 .shareButtons {
@@ -283,12 +283,12 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #111;
-    color: #fff;
+    background-color: #fdfdfd;
+    color: #111111;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #222;
+    border: 1px solid #e4e4e7;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -301,8 +301,8 @@
 
 /* Author Card */
 .authorCard {
-    background-color: #0c0c0c;
-    border: 1px solid #1a1a1a;
+    background-color: #111111;
+    border: 1px solid #f4f4f5;
     padding: 1.5rem;
     border-radius: 4px;
     display: flex;
@@ -312,7 +312,7 @@
 
 .authorImage {
     border-radius: 50%;
-    border: 2px solid #222;
+    border: 2px solid #e4e4e7;
     flex-shrink: 0;
 }
 
@@ -325,12 +325,12 @@
 .authorNameCard {
     font-size: 1.2rem;
     font-weight: 800;
-    color: #fff;
+    color: #111111;
 }
 
 .authorBio {
     font-size: 0.9rem;
-    color: #aaa;
+    color: #52525b;
     line-height: 1.5;
 }
 
@@ -350,7 +350,7 @@
 
 .sidebarSection {
     background-color: #080808;
-    border: 1px solid #1a1a1a;
+    border: 1px solid #f4f4f5;
     border-radius: 4px;
     padding: 1.5rem;
 }
@@ -358,7 +358,7 @@
 .sidebarTitle {
     font-size: 1.2rem;
     font-weight: 800;
-    color: #fff;
+    color: #111111;
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid #fbbf24;
@@ -385,7 +385,7 @@
 .trendNumber {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #333;
+    color: #e4e4e7;
     line-height: 1;
 }
 
@@ -410,7 +410,7 @@
 
 .communityPost {
     padding-bottom: 1rem;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid #f4f4f5;
 }
 
 .communityPost:last-of-type {
@@ -433,7 +433,7 @@
 
 .commText {
     font-size: 0.85rem;
-    color: #aaa;
+    color: #52525b;
     line-height: 1.5;
     font-style: italic;
 }

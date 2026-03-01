@@ -1,8 +1,8 @@
 .skeleton {
     background: linear-gradient(90deg,
-            #1a1a1a 25%,
-            #262626 50%,
-            #1a1a1a 75%);
+            #f4f4f5 25%,
+            #d4d4d8 50%,
+            #f4f4f5 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite ease-in-out;
 }

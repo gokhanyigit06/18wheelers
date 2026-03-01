@@ -1,0 +1,222 @@
+.termsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 6rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #111111;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #71717a;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.breadcrumb a {
+    color: #111111;
+    text-decoration: none;
+}
+
+.breadcrumb span {
+    color: #d4d4d8;
+}
+
+.header {
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+}
+
+.lastUpdated {
+    font-size: 1rem;
+    color: #71717a;
+}
+
+.contentSection {
+    max-width: 800px;
+    margin-bottom: 8rem;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.sectionTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+.sectionText {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #3f3f46;
+    margin-bottom: 1.5rem;
+}
+
+.list {
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.list li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #3f3f46;
+    position: relative;
+    list-style-type: none;
+}
+
+.list li::before {
+    content: "•";
+    position: absolute;
+    left: -1.2rem;
+    color: #111111;
+}
+
+/* Subscribe Section */
+.subscribeSection {
+    background-color: #f8f8f8;
+    margin: 0 -50vw 2rem -50vw;
+    padding: 4rem 50vw;
+}
+
+.subscribeBox {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.subsLeft h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.subsLeft p {
+    color: #52525b;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.subsRight {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f5;
+    border-radius: 50px;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+}
+
+.emailInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.subsBtn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.checkboxWrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #52525b;
+}
+
+/* Instagram Block */
+.instagramSection {
+    background-color: #f8f8f8;
+    margin: 0 -50vw;
+    padding: 0 50vw 6rem 50vw;
+}
+
+.igGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.igFollowBox {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.igIcon {
+    margin-bottom: 1.5rem;
+}
+
+.igFollowBox h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.followBtn {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.igImageWrapper {
+    position: relative;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.igImage {
+    object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+
+    .subscribeBox,
+    .igGrid {
+        grid-template-columns: 1fr;
+    }
+}
