@@ -1,0 +1,477 @@
+/* Layout */
+.articleLayout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+/* 1. Above The Fold */
+.aboveTheFold {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.breadcrumbs a {
+    color: #fff;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: #00d084;
+}
+
+.title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.authorName strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.metaDivider {
+    width: 1px;
+    height: 16px;
+    background-color: #333;
+}
+
+.featuredImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 0;
+    margin-bottom: 2rem;
+}
+
+.featuredImage {
+    object-fit: cover;
+}
+
+/* Main Content constraints */
+.mainContent {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. The Hook (TL;DR) */
+.tldrBox {
+    background-color: #111;
+    border-left: 4px solid #fbbf24;
+    /* Warning yellow accent */
+    padding: 1.5rem;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 2.5rem;
+}
+
+.tldrTitle {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fbbf24;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tldrList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tldrList li {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 1.05rem;
+    color: #eee;
+    line-height: 1.5;
+}
+
+.tldrList li::before {
+    content: '⚡';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 0.8rem;
+}
+
+/* 3. The Body & Typography */
+.bodyText {
+    color: #ddd;
+    font-size: 1.1rem;
+}
+
+.bodyText p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.bodyText h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.bodyText h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.bodyText ul {
+    list-style-type: none;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.bodyText ul li {
+    position: relative;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+}
+
+.bodyText ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: #00d084;
+}
+
+/* Table Style */
+.bodyText table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.bodyText th,
+.bodyText td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.bodyText th {
+    background-color: #111;
+    color: #fff;
+    font-weight: 700;
+    border-bottom: 2px solid #333;
+}
+
+.bodyText tr:hover td {
+    background-color: #080808;
+}
+
+/* Ad Wrapper inside content */
+.adWrapper {
+    margin: 2.5rem 0;
+    background-color: #050505;
+    /* subtle contrast */
+    border: 1px dashed #222;
+    border-radius: 4px;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1a1a1a;
+}
+
+.tagLabel {
+    font-weight: 700;
+    color: #fff;
+}
+
+.tag {
+    background-color: #111;
+    color: #aaa;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border: 1px solid #222;
+}
+
+.tag:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+/* Footer & Social Share */
+.articleFooter {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.shareRow {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.shareRow span {
+    font-weight: 700;
+    color: #fff;
+}
+
+.shareButtons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.shareBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #222;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.shareBtn:hover {
+    background-color: #fbbf24;
+    color: #000;
+    border-color: #fbbf24;
+}
+
+/* Author Card */
+.authorCard {
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 4px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.authorImage {
+    border-radius: 50%;
+    border: 2px solid #222;
+    flex-shrink: 0;
+}
+
+.authorInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.authorNameCard {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.authorBio {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* 5. Sidebar Styling */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.stickySidebar {
+    position: sticky;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.sidebarSection {
+    background-color: #080808;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 1.5rem;
+}
+
+.sidebarTitle {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #fbbf24;
+    /* Warning yellow */
+    display: inline-block;
+}
+
+/* Trending List */
+.trendingList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.trendingList li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.trendNumber {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #333;
+    line-height: 1;
+}
+
+.trendingList li a {
+    font-weight: 700;
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+.trendingList li a:hover {
+    color: #fbbf24;
+}
+
+/* Community Widget */
+.communityWidget {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.communityPost {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.communityPost:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.commHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #fbbf24;
+    margin-bottom: 0.5rem;
+}
+
+.commUser {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.commText {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.joinClubBtn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: transparent;
+    color: #fbbf24;
+    border: 1px solid #fbbf24;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.joinClubBtn:hover {
+    background-color: #fbbf24;
+    color: #000;
+}
+
+@media (max-width: 1024px) {
+    .articleLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .stickySidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .meta {
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+}

@@ -1,0 +1,366 @@
+.header {
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    z-index: 1000;
+}
+
+.container,
+.containerRelative {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.containerRelative {
+    position: relative;
+    justify-content: center;
+}
+
+/* Row 1: Top Bar */
+.topBar {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.socials {
+    display: flex;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.socialCircle {
+    width: 34px;
+    height: 34px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0a0a0;
+    transition: all 0.2s ease;
+}
+
+.socialCircle:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.logo {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.logo a {
+    font-family: var(--font-bebas);
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.logoIcon {
+    margin-right: 0.5rem;
+    font-size: 2.2rem;
+}
+
+.accentText {
+    color: var(--accent);
+}
+
+.actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.searchIcon {
+    color: #fff;
+}
+
+.newsletterBtn {
+    background-color: var(--accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0 1.25rem;
+    height: 38px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.newsletterBtn:hover {
+    transform: scale(1.05);
+    background-color: #fff;
+}
+
+/* Row 2: Navigation Links */
+.navMain {
+    padding: 1.2rem 0;
+    /* Taller, more prominent */
+    background-color: #000;
+    border-top: 1px solid #1a1a1a;
+    /* Slight separation */
+}
+
+.navMain .container {
+    justify-content: center;
+}
+
+.navLinks {
+    display: flex;
+    gap: 3.5rem;
+    /* Wider gaps for an 'oturaklı' look */
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navLinks li>a {
+    font-weight: 800;
+    /* Standout bold */
+    font-size: 1.05rem;
+    /* Slightly larger text */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+    text-transform: capitalize;
+}
+
+.navLinks li>a:hover {
+    color: var(--accent);
+}
+
+/* Social Club App Link Style */
+.appLink {
+    background-color: #222;
+    color: #00d084 !important;
+    /* Standout Green */
+    border: 1px solid #00d084;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.appLink:hover {
+    background-color: #00d084;
+    color: #000 !important;
+}
+
+/* MEGA MENU STYLES */
+.megaMenu {
+    position: absolute;
+    top: 100%;
+    left: 1.5rem;
+    /* align with container padding */
+    right: 1.5rem;
+    background-color: #161616;
+    /* match standard card bg */
+    border-radius: 4px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid #2a2a2a;
+    margin-top: 0.8rem;
+    /* below the nav */
+    text-align: left;
+    /* Avoid center inheritance */
+}
+
+/* Invisible bridge so hover is not lost */
+.megaMenu::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 20px;
+}
+
+.navItemMega:hover .megaMenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.megaHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.megaTitle {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.megaShowMore {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #888;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.megaShowMore:hover {
+    color: #fff;
+    text-decoration: none !important;
+}
+
+.megaGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.megaArticle {
+    display: flex;
+    flex-direction: column;
+}
+
+.megaImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #222;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.megaImage {
+    object-fit: cover;
+}
+
+.megaArticleTitle {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.megaArticleTitle a {
+    color: #fff;
+    transition: color 0.2s;
+    font-weight: 700;
+}
+
+.megaArticleTitle a:hover {
+    color: var(--accent);
+}
+
+.megaAuthor {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.megaAuthor strong {
+    color: #fff;
+}
+
+/* Row 3: Trending Bar */
+.trendingBar {
+    background-color: #050505;
+    padding: 0.6rem 0;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+.trendingBar .container {
+    justify-content: center;
+    /* Center the trending items */
+}
+
+.trendingText {
+    font-size: 0.85rem;
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center items within the flex wrapper */
+    gap: 0.75rem;
+    white-space: nowrap;
+}
+
+.trendingLabel {
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.trendingLink {
+    color: #fff;
+    font-weight: 500;
+}
+
+.trendingLink:hover {
+    text-decoration: underline;
+    color: var(--accent);
+}
+
+.separator {
+    color: #333;
+}
+
+@media (max-width: 992px) {
+
+    .socials,
+    .actions {
+        display: none;
+    }
+
+    .logo {
+        justify-content: center;
+    }
+
+    .navMain .container,
+    .navMain .containerRelative,
+    .trendingBar .container {
+        justify-content: flex-start;
+    }
+
+    .navItemMega:hover .megaMenu {
+        display: none;
+        /* simple hide mega menu on small screens, can implement accordion later */
+    }
+
+    .navLinks {
+        gap: 1.5rem;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 5px;
+    }
+
+    .trendingText {
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+}
