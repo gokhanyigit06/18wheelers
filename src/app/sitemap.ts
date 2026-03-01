@@ -6,31 +6,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return [
         {
-            url: 'https://18wheelers.com',
+            url: 'https://18-wheelers.com',
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 1,
         },
         {
-            url: 'https://18wheelers.com/news',
+            url: 'https://18-wheelers.com/news',
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.8,
         },
         {
-            url: 'https://18wheelers.com/trucks',
+            url: 'https://18-wheelers.com/trucks',
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.8,
         },
         {
-            url: 'https://18wheelers.com/muscle-cars',
+            url: 'https://18-wheelers.com/muscle-cars',
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.8,
         },
         {
-            url: 'https://18wheelers.com/logistics',
+            url: 'https://18-wheelers.com/logistics',
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.7,

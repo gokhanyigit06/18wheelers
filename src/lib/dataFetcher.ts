@@ -38,6 +38,10 @@ export const getArticles = async (limitCount = 10, category?: string) => {
 };
 
 export const getArticleById = async (id: string) => {
+    if (!id || typeof id !== 'string') {
+        console.warn("getArticleById: Invalid ID provided", id);
+        return null;
+    }
     try {
         const doc = await adminDb.collection("articles").doc(id).get();
         if (!doc.exists) {
