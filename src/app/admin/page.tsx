@@ -1,7 +1,35 @@
+"use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { CopyPlus, TrendingUp, Users, BookOpen, ExternalLink } from "lucide-react";
+import { CopyPlus, TrendingUp, Users, BookOpen, ExternalLink, Sparkles, Image as ImageIcon } from "lucide-react";
+import { db } from "../../lib/firebase";
+import { collection, query, where, getDocs, orderBy, limit } from "firebase/firestore";
 
 export default function AdminDashboard() {
+    const [drafts, setDrafts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchDrafts = async () => {
+            try {
+                const q = query(
+                    collection(db, "articles"),
+                    where("status", "==", "draft"),
+                    orderBy("createdAt", "desc"),
+                    limit(5)
+                );
+                const snapshot = await getDocs(q);
+                const draftList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setDrafts(draftList);
+            } catch (err) {
+                console.error("Error fetching drafts:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchDrafts();
+    }, []);
+
     return (
         <div>
             <header style={{ marginBottom: "3rem" }}>
@@ -14,7 +42,48 @@ export default function AdminDashboard() {
             </header>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "3rem" }}>
-                {/* Quick Actions */}
+                {/* AI Queue */}
+                <div style={{
+                    padding: "2rem",
+                    backgroundColor: "#f5f3ff",
+                    border: "2px solid #ddd6fe",
+                    borderRadius: "16px",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+                }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
+                        <div style={{ padding: "0.5rem", backgroundColor: "#ede9fe", borderRadius: "8px" }}>
+                            <Sparkles size={20} color="#7c3aed" />
+                        </div>
+                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>AI Queue</h2>
+                    </div>
+                    <p style={{ color: "#6b7280", fontSize: "0.95rem", marginBottom: "1.5rem" }}>
+                        {drafts.length} articles waiting for images and final touch.
+                    </p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                        {drafts.length > 0 ? drafts.map(d => (
+                            <Link key={d.id} href={`/admin/write?id=${d.id}`} style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                padding: "0.75rem",
+                                backgroundColor: "#fff",
+                                borderRadius: "8px",
+                                textDecoration: "none",
+                                color: "#111",
+                                border: "1px solid #e5e7eb",
+                                fontSize: "0.85rem",
+                                fontWeight: 600
+                            }}>
+                                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: "160px" }}>{d.title}</span>
+                                <ImageIcon size={14} color="#7c3aed" />
+                            </Link>
+                        )) : (
+                            <p style={{ fontSize: "0.85rem", fontStyle: "italic" }}>No drafts pending.</p>
+                        )}
+                    </div>
+                </div>
+
+                {/* Content Creation */}
                 <div style={{
                     padding: "2rem",
                     backgroundColor: "#ffffff",
@@ -26,26 +95,23 @@ export default function AdminDashboard() {
                         <div style={{ padding: "0.5rem", backgroundColor: "#f3f4f6", borderRadius: "8px" }}>
                             <CopyPlus size={20} color="#111111" />
                         </div>
-                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>Content Creation</h2>
+                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>Manual Write</h2>
                     </div>
-                    <p style={{ color: "#6b7280", fontSize: "0.95rem", marginBottom: "1.5rem" }}>Start a new draft with SEO optimization and persona integration.</p>
+                    <p style={{ color: "#6b7280", fontSize: "0.95rem", marginBottom: "1.5rem" }}>Start a new story from scratch with full creative control.</p>
                     <Link href="/admin/write" style={{
                         display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.5rem",
+                        padding: "0.8rem 1.5rem",
                         backgroundColor: "#111111",
                         color: "#fff",
-                        padding: "0.8rem 1.5rem",
                         borderRadius: "8px",
                         fontWeight: "700",
-                        textDecoration: "none",
-                        transition: "all 0.2s"
+                        textDecoration: "none"
                     }}>
-                        Compose New Article
+                        Compose New
                     </Link>
                 </div>
 
-                {/* Stats / Performance */}
+                {/* Performance Stats */}
                 <div style={{
                     padding: "2rem",
                     backgroundColor: "#ffffff",
@@ -57,56 +123,18 @@ export default function AdminDashboard() {
                         <div style={{ padding: "0.5rem", backgroundColor: "#ecfdf5", borderRadius: "8px" }}>
                             <TrendingUp size={20} color="#059669" />
                         </div>
-                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>SEO Performance</h2>
+                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>SEO Tracker</h2>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <span style={{ color: "#6b7280" }}>Indexed Articles</span>
-                            <span style={{ fontWeight: 800 }}>124</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <span style={{ color: "#6b7280" }}>Organic Reach</span>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <span style={{ color: "#6b7280" }}>Reach</span>
                             <span style={{ fontWeight: 800, color: "#059669" }}>+12.4%</span>
                         </div>
-                        <button style={{
-                            marginTop: "0.5rem",
-                            padding: "0.6rem",
-                            backgroundColor: "#f9fafb",
-                            border: "1px solid #e5e7eb",
-                            borderRadius: "6px",
-                            fontSize: "0.85rem",
-                            fontWeight: 600,
-                            cursor: "pointer"
-                        }}>
-                            View SEO Reports
-                        </button>
-                    </div>
-                </div>
-
-                {/* Active Personas */}
-                <div style={{
-                    padding: "2rem",
-                    backgroundColor: "#ffffff",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "16px",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
-                }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1.5rem" }}>
-                        <div style={{ padding: "0.5rem", backgroundColor: "#eff6ff", borderRadius: "8px" }}>
-                            <Users size={20} color="#2563eb" />
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                            <span style={{ color: "#6b7280" }}>Domain Authority</span>
+                            <span style={{ fontWeight: 800 }}>42</span>
                         </div>
-                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>Editorial Team</h2>
                     </div>
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1rem" }}>
-                        <li style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                            <div style={{ width: "32px", height: "32px", backgroundColor: "#fbd5d5", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.8rem" }}>CV</div>
-                            <span style={{ fontWeight: 700, fontSize: "0.95rem" }}>Caleb "Gearhead" Vance</span>
-                        </li>
-                        <li style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                            <div style={{ width: "32px", height: "32px", backgroundColor: "#dbeafe", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.8rem" }}>ER</div>
-                            <span style={{ fontWeight: 700, fontSize: "0.95rem" }}>Elena "Logi" Rodriguez</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
@@ -120,9 +148,9 @@ export default function AdminDashboard() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                         <BookOpen size={20} color="#111111" />
-                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>Recent Content</h2>
+                        <h2 style={{ fontSize: "1.25rem", fontWeight: "800", margin: 0 }}>Live Library</h2>
                     </div>
-                    <Link href="#" style={{ fontSize: "0.9rem", color: "#2563eb", fontWeight: 600, textDecoration: "none" }}>View All Library</Link>
+                    <Link href="#" style={{ fontSize: "0.9rem", color: "#2563eb", fontWeight: 600, textDecoration: "none" }}>View All</Link>
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -137,20 +165,17 @@ export default function AdminDashboard() {
                             padding: "1rem",
                             backgroundColor: "#f9fafb",
                             borderRadius: "12px",
-                            border: "1px solid transparent",
-                            transition: "all 0.2s"
+                            border: "1px solid transparent"
                         }}>
                             <div>
                                 <div style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "0.25rem" }}>{item.title}</div>
                                 <div style={{ fontSize: "0.85rem", color: "#6b7280" }}>{item.cat} • {item.date}</div>
                             </div>
-                            <button style={{ background: "none", border: "none", cursor: "pointer", color: "#9ca3af" }}>
-                                <ExternalLink size={18} />
-                            </button>
+                            <ExternalLink size={18} color="#9ca3af" />
                         </div>
                     ))}
                 </div>
             </div>
-        </div >
+        </div>
     );
 }

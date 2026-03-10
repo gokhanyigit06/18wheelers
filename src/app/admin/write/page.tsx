@@ -29,21 +29,46 @@ export default function AdminWrite() {
     const [featuredImage, setFeaturedImage] = useState("https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800");
 
     const [isPublishing, setIsPublishing] = useState(false);
+    const [articleId, setArticleId] = useState<string | null>(null);
     const router = useRouter();
 
-    // Character Limits
-    const MAX_TITLE = 60;
-    const MAX_DESC = 160;
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        if (id) {
+            setArticleId(id);
+            // Fetch draft data
+            const fetchDraft = async () => {
+                const { doc, getDoc } = await import("firebase/firestore");
+                const docRef = doc(db, "articles", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    setHeadline(data.title || "");
+                    setTldr(data.tldr || "");
+                    setBodyHtml(data.body || "");
+                    setSelectedCategory(data.category || "");
+                    setSelectedPersona(data.authorId || null);
+                    setFeaturedImage(data.image || "");
+                    setMetaTitle(data.seo?.metaTitle || "");
+                    setMetaDesc(data.seo?.metaDesc || "");
+                    setKeywords(data.seo?.keywords || "");
+                    setSlug(data.slug || "");
+                }
+            };
+            fetchDraft();
+        }
+    }, []);
 
     // Auto-generate slug and meta title
     useEffect(() => {
-        if (headline && !slug) {
+        if (headline && !slug && !articleId) {
             setSlug(headline.toLowerCase().replace(/ /g, "-").replace(/[^\w-]+/g, ""));
         }
-        if (headline && !metaTitle) {
+        if (headline && !metaTitle && !articleId) {
             setMetaTitle(headline);
         }
-    }, [headline]);
+    }, [headline, articleId]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -54,6 +79,8 @@ export default function AdminWrite() {
 
         setIsPublishing(true);
         try {
+            const { doc, updateDoc, collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+
             const articleData = {
                 title: headline,
                 slug: slug || headline.toLowerCase().replace(/ /g, "-"),
@@ -72,12 +99,18 @@ export default function AdminWrite() {
                     isIndexable: isIndexable,
                     sitemapPriority: sitemapPriority
                 },
-                createdAt: serverTimestamp(),
+                updatedAt: serverTimestamp(),
                 status: "published"
             };
 
-            const docRef = await addDoc(collection(db, "articles"), articleData);
-            alert(`SUCCESS! Article published with ID: ${docRef.id}`);
+            if (articleId) {
+                await updateDoc(doc(db, "articles", articleId), articleData);
+                alert("SUCCESS! Article updated and published.");
+            } else {
+                (articleData as any).createdAt = serverTimestamp();
+                const docRef = await addDoc(collection(db, "articles"), articleData);
+                alert(`SUCCESS! Article published with ID: ${docRef.id}`);
+            }
             router.push(`/${selectedCategory}`);
         } catch (error: any) {
             console.error("Error publishing: ", error);

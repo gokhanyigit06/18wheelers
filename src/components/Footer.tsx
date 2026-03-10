@@ -3,11 +3,15 @@
 import Link from "next/link";
 import { Instagram, Linkedin, Youtube, Twitter, Rss, ArrowUp } from "lucide-react";
 import styles from "./Footer.module.css";
+import AdUnit from "./AdUnit";
 
 export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className="container">
+                <div style={{ padding: '2rem 0' }}>
+                    <AdUnit type="leaderboard" />
+                </div>
                 <div className={styles.footerInner}>
 
                     {/* Top Row: Logo & Link Groups */}

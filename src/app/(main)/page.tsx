@@ -1,6 +1,7 @@
 import Hero from "../../components/Hero";
 import ArticleList from "../../components/ArticleList";
 import SEO from "../../components/SEO";
+import AdUnit from "../../components/AdUnit";
 import { getArticles } from "../../lib/dataFetcher";
 
 export default async function Home() {
@@ -24,8 +25,9 @@ export default async function Home() {
       />
       <Hero article={latestArticle} />
       <div className="container" style={{ marginTop: "2rem" }}>
+        <AdUnit type="leaderboard" />
         <div style={{
-          margin: "3rem 0 1rem",
+          margin: "1rem 0 1rem",
           paddingBottom: "1rem",
           borderBottom: "1px solid #e5e7eb",
           display: "flex",
